@@ -19,9 +19,10 @@ const Movie = require('./models/Movie');
  app.get('/api/movies', async (req, res) => {
     try {
         const movies = await Movie.find();
-            res.json(movies);
+        res.json(movies || []);
      } catch (err) {
-            res.status(500).json({ message: err.message });
+        console.error("Error in GET:", err);
+        res.status(500).json({ message: "Internal server error" });
     }
 });
 
