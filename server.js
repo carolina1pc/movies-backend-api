@@ -45,6 +45,7 @@ app.post('/api/movies', async (req, res) => {
         const newMovie = await movie.save();
         res.status(201).json(newMovie);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        console.error(err); // Asta va trimite eroarea în logurile Render
+    res.status(500).json({ error: "Eroare la salvare" });
     }
 });
