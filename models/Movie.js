@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const MovieSchema = new mongoose.Schema({
-    title: String,
+    title: { type: String, required: true },
     description: String,
     imageUrl: String,
     year: Number,
-    tmdbId: String
+    tmdbId: String,
 });
 
 module.exports = mongoose.model('Movie', MovieSchema);
