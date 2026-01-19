@@ -31,13 +31,14 @@ app.listen(PORT, () => {
 });
 
 app.post('/api/movies', async (req, res) => {
-    const { title, description, imageUrl, year } = req.body;
+    const { title, description, imageUrl, year, tmdbId } = req.body;
 
     const movie = new Movie({
-        title: title,
-        description: description,
-        imageUrl: imageUrl,
-        year: year
+        title,
+        description,
+        imageUrl,
+        year,
+        tmdbId
     });
 
     try {
