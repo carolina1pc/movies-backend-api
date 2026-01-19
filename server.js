@@ -11,8 +11,8 @@ app.use(cors());
 const mongoURI = process.env.MONGO_URI;
 
 mongoose.connect(mongoURI)
-    .then(() => console.log("✅ Victorie! Te-ai conectat la baza de date online!"))
-    .catch((err) => console.error("❌ Eroare de conexiune:", err));
+    .then(() => console.log("✅ You are connected to the database online!"))
+    .catch((err) => console.error("❌ Connection error: ", err));
 
 const Movie = require('./models/Movie');
 
@@ -31,11 +31,13 @@ app.listen(PORT, () => {
 });
 
 app.post('/api/movies', async (req, res) => {
+    const { title, description, imageUrl, year } = req.body;
+
     const movie = new Movie({
-        title: "Inception",
-        description: "Un film despre vise.",
-        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv1RhC-PupkVKdW-vrOrX8iQsbEW-eTGxjrg&s",
-        year: 2010
+        title: title,
+        description: description,
+        imageUrl: imageUrl,
+        year: year
     });
 
     try {
